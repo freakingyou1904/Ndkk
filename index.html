@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f2ff">
+<title>PetLoop — A comunidade dos animais</title>
+<style>
+:root{--bg:#f6f4fb;--card:#fff;--ink:#25243a;--muted:#77758c;--purple:#7657e8;--purple2:#eee9ff;--pink:#ff7caa;--mint:#c8f5e4;--line:#ece9f4;--shadow:0 10px 28px #2920470c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink)}
+button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}.topbar{height:72px;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:24px;padding:0 max(20px,calc((100vw - 1380px)/2));position:sticky;top:0;z-index:10}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:24px;letter-spacing:-1px;white-space:nowrap}.logo-mark{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--purple),#a18cff);display:grid;place-items:center;color:#fff;font-size:23px;box-shadow:0 7px 16px #7657e833}.search{flex:1;max-width:540px;position:relative}.search input{width:100%;border:1px solid var(--line);background:#f8f7fc;padding:12px 16px 12px 42px;border-radius:15px;outline:none}.search:before{content:"⌕";position:absolute;left:15px;top:5px;font-size:27px;color:var(--muted)}.top-actions{margin-left:auto;display:flex;align-items:center;gap:10px}.icon-btn{background:#f4f1fc;width:42px;height:42px;border-radius:14px;font-size:19px;color:var(--purple)}.avatar-mini{background:var(--mint);width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:23px}
+.layout{max-width:1380px;margin:24px auto;padding:0 20px;display:grid;grid-template-columns:230px minmax(0,1fr) 300px;gap:22px;align-items:start}.panel,.card{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}.side{position:sticky;top:94px}.side-inner{padding:16px}.side-link{display:flex;align-items:center;gap:12px;padding:12px;border-radius:14px;color:#68657c;font-weight:650;margin:2px 0;background:transparent;text-align:left;width:100%}.side-link span:first-child{font-size:21px;width:25px;text-align:center}.side-link.active,.side-link:hover{background:var(--purple2);color:var(--purple)}.side-label{font-size:11px;color:#a19db2;font-weight:800;letter-spacing:1.5px;padding:18px 12px 6px}.mini-community{display:flex;gap:10px;align-items:center;padding:10px 8px;font-size:13px;font-weight:650;color:#625f76}.mini-community b{font-size:21px}.main{min-width:0}.hero{padding:26px 28px;background:linear-gradient(120deg,#6f51df,#a58cf9 65%,#f6b8d5);color:white;position:relative;overflow:hidden;margin-bottom:18px}.hero:after{content:"🐕 🐈 🦜";position:absolute;right:22px;bottom:-10px;font-size:45px;opacity:.6;transform:rotate(-7deg)}.eyebrow{font-size:11px;font-weight:900;letter-spacing:1.8px;text-transform:uppercase;opacity:.8}.hero h1{font-size:clamp(26px,3vw,37px);line-height:1.06;letter-spacing:-1.4px;margin:10px 0;max-width:500px}.hero p{margin:0;max-width:460px;color:#f5f1ff;line-height:1.55}.hero-buttons{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}.btn{border-radius:13px;padding:11px 16px;font-weight:800}.btn-white{background:white;color:var(--purple)}.btn-ghost{background:#ffffff26;color:white;border:1px solid #ffffff65}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:24px 2px 13px}.section-head h2{font-size:19px;margin:0;letter-spacing:-.4px}.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}.pill{background:#f0edfb;color:#77718d;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800}.filter-row{display:flex;gap:8px;overflow:auto;padding:2px 0 12px}.filter{background:white;border:1px solid var(--line);padding:9px 13px;border-radius:999px;color:#77718c;font-size:13px;font-weight:750;white-space:nowrap}.filter.active{background:var(--purple);color:white;border-color:var(--purple)}.stories{display:flex;gap:12px;overflow:auto;padding:3px 1px 7px}.story{min-width:88px;text-align:center;cursor:pointer}.story-ring{width:68px;height:68px;margin:0 auto 7px;padding:3px;border-radius:23px;background:linear-gradient(135deg,var(--pink),var(--purple))}.story-face{width:100%;height:100%;border:3px solid white;border-radius:20px;display:grid;place-items:center;font-size:34px;background:#f4efff}.story-name{font-size:12px;font-weight:750;white-space:nowrap}.composer{display:flex;gap:12px;padding:16px;align-items:center;margin:10px 0 16px}.composer-face{width:45px;height:45px;border-radius:16px;background:#e5dcff;display:grid;place-items:center;font-size:25px;flex-shrink:0}.composer input{border:0;background:#f7f5fc;border-radius:14px;padding:14px 15px;flex:1;min-width:0;outline:none}.composer button{background:var(--purple);color:white;border-radius:13px;padding:12px 15px;font-weight:800}.post{padding:18px;margin-bottom:16px}.post-head{display:flex;align-items:center;gap:11px}.pet-avatar{width:48px;height:48px;border-radius:17px;display:grid;place-items:center;font-size:29px;background:#f0eaff;flex-shrink:0}.pet-name{font-weight:850}.pet-meta{font-size:12px;color:var(--muted);margin-top:3px}.more{margin-left:auto;background:transparent;color:#9a96ad;font-size:22px}.post-text{line-height:1.6;font-size:14px;margin:15px 0}.post-art{border-radius:18px;min-height:170px;display:grid;place-items:center;font-size:90px;position:relative;overflow:hidden;margin-bottom:14px}.post-art:after{content:attr(data-caption);position:absolute;bottom:12px;left:14px;font-size:12px;font-weight:850;color:#4c4169;background:#ffffffb8;padding:7px 10px;border-radius:999px}.art-sun{background:linear-gradient(135deg,#ffe4b5,#ffd1d8)}.art-sea{background:linear-gradient(135deg,#b6edff,#d8f8e7)}.art-green{background:linear-gradient(135deg,#c8f5d7,#f8f4bc)}.art-night{background:linear-gradient(135deg,#d7caff,#f9d6ed)}.art-sand{background:linear-gradient(135deg,#f8dfbd,#fff2db)}.post-stats{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;padding:0 2px 12px;border-bottom:1px solid var(--line)}.post-actions{display:flex;gap:6px;padding-top:10px}.post-action{flex:1;padding:10px 5px;border-radius:11px;background:transparent;color:#77738a;font-size:13px;font-weight:750}.post-action:hover,.post-action.liked{background:#f2edff;color:var(--purple)}.comment-box{display:none;padding-top:12px;gap:8px}.comment-box.open{display:flex}.comment-box input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:10px}.comment-box button{background:var(--purple);color:white;border-radius:12px;padding:8px 12px}.right-card{padding:17px;margin-bottom:16px}.right-title{display:flex;justify-content:space-between;align-items:center;margin:0 0 14px;font-size:15px}.right-title a{color:var(--purple);font-size:12px;cursor:pointer}.profile-row{display:flex;gap:10px;align-items:center;margin:13px 0}.profile-emoji{width:42px;height:42px;border-radius:14px;background:#f1edfc;display:grid;place-items:center;font-size:25px}.profile-info{min-width:0;flex:1}.profile-info b{font-size:13px;display:block}.profile-info small{color:var(--muted);font-size:11px}.follow{border:1px solid #ded6ff;background:white;color:var(--purple);border-radius:10px;padding:7px 9px;font-weight:800;font-size:11px}.follow.following{background:var(--purple2)}.community{display:flex;gap:11px;margin:12px 0;align-items:center}.community-icon{width:45px;height:45px;border-radius:15px;display:grid;place-items:center;font-size:24px;background:#effaf5}.community b{font-size:12px;display:block}.community small{font-size:11px;color:var(--muted)}.event{background:linear-gradient(130deg,#fff1f5,#f0edff);border-radius:16px;padding:13px;margin-top:10px}.event-date{font-size:10px;color:var(--purple);font-weight:900;letter-spacing:1px}.event b{display:block;margin:5px 0;font-size:13px}.event p{font-size:11px;color:var(--muted);margin:0 0 10px}.event button{background:white;color:var(--purple);padding:8px 10px;border-radius:10px;font-size:11px;font-weight:800}.directory{display:none}.directory.active{display:block}.feed-view.hidden{display:none}.profile-grid,.page-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.profile-card,.page-card{padding:15px;text-align:center}.profile-card .big-emoji{width:75px;height:75px;border-radius:25px;background:#f3edff;display:grid;place-items:center;font-size:46px;margin:0 auto 10px}.profile-card h3,.page-card h3{font-size:14px;margin:4px 0}.profile-card p,.page-card p{font-size:11px;color:var(--muted);line-height:1.45;min-height:32px}.profile-card .follow{width:100%;margin-top:5px}.page-card .community-icon{margin:0 auto 9px;width:66px;height:66px;font-size:34px;border-radius:22px}.page-card .btn{width:100%;margin-top:5px;background:var(--purple2);color:var(--purple);font-size:12px;padding:9px}.empty{padding:30px;text-align:center;color:var(--muted)}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#28243c;color:white;padding:12px 17px;border-radius:13px;z-index:30;box-shadow:var(--shadow);transition:.2s;font-size:13px}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-backdrop{position:fixed;inset:0;background:#211c3d80;display:none;align-items:center;justify-content:center;padding:18px;z-index:25}.modal-backdrop.open{display:flex}.modal{background:white;border-radius:22px;padding:22px;width:min(520px,100%);max-height:90vh;overflow:auto}.modal h2{margin:0 0 6px}.modal p{font-size:13px;color:var(--muted);margin:0 0 17px}.form-field{display:block;margin:12px 0;font-size:12px;font-weight:800;color:#69657e}.form-field input,.form-field textarea,.form-field select{display:block;width:100%;margin-top:6px;border:1px solid var(--line);border-radius:12px;padding:11px;outline-color:var(--purple);background:white}.form-field textarea{min-height:95px;resize:vertical}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:17px}.btn-light{background:#f2effa;color:#6b6681}.btn-primary{background:var(--purple);color:white}.mobile-nav{display:none}
+@media(max-width:1100px){.layout{grid-template-columns:205px minmax(0,1fr)}.right-col{display:none}.profile-grid,.page-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.topbar{height:62px;padding:0 14px;gap:10px}.logo{font-size:20px}.logo-mark{width:36px;height:36px}.search{max-width:none}.search input{padding:10px 10px 10px 35px}.top-actions .icon-btn{display:none}.layout{display:block;padding:0 12px;margin:14px auto 85px}.left-col{display:none}.hero{padding:23px 20px}.hero:after{font-size:30px;right:10px}.hero p{max-width:80%}.hero h1{font-size:29px}.composer{padding:12px;gap:8px}.composer button{padding:11px}.post{padding:14px}.post-art{min-height:145px;font-size:75px}.profile-grid,.page-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mobile-nav{position:fixed;bottom:0;left:0;right:0;background:#ffffffed;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom));z-index:15;backdrop-filter:blur(12px)}.mobile-nav button{background:transparent;color:#77738b;font-size:10px;font-weight:750;display:flex;flex-direction:column;gap:3px;align-items:center}.mobile-nav span{font-size:21px}.mobile-nav button.active{color:var(--purple)}.top-actions{gap:4px}.avatar-mini{width:35px;height:35px}.section-head{margin-top:20px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="logo"><div class="logo-mark">🐾</div>PetLoop</div>
+  <div class="search"><input id="searchInput" placeholder="Pesquisar animais, perfis e páginas..." aria-label="Pesquisar"></div>
+  <div class="top-actions"><button class="icon-btn" id="notifyBtn" title="Notificações">♡</button><div class="avatar-mini" title="O teu perfil">🐶</div></div>
+</header>
+<div class="layout">
+  <aside class="left-col side">
+    <div class="panel side-inner">
+      <button class="side-link active" data-view="feed"><span>🏠</span> Feed</button>
+      <button class="side-link" data-view="profiles"><span>🐾</span> Explorar perfis</button>
+      <button class="side-link" data-view="pages"><span>📚</span> Páginas de animais</button>
+      <button class="side-link" data-view="groups"><span>💬</span> Comunidades</button>
+      <button class="side-link" data-view="events"><span>🎉</span> Eventos</button>
+      <button class="side-link" data-view="saved"><span>🔖</span> Publicações guardadas</button>
+      <div class="side-label">PÁGINAS POPULARES</div>
+      <div class="mini-community"><b>🐕</b> Cães & Companhia</div>
+      <div class="mini-community"><b>🐈</b> Mundo dos Gatos</div>
+      <div class="mini-community"><b>🦜</b> Aves de Estimação</div>
+      <div class="mini-community"><b>🐠</b> Aquários em Casa</div>
+      <div class="mini-community"><b>🐇</b> Pequenos Patudos</div>
+    </div>
+  </aside>
+  <main class="main">
+    <section class="hero card">
+      <div class="eyebrow">A tua comunidade pet</div>
+      <h1>Mais patinhas.<br>Mais histórias. Mais amizade.</h1>
+      <p>Conhece animais de todo o tipo, acompanha as suas aventuras e encontra a tua comunidade.</p>
+      <div class="hero-buttons"><button class="btn btn-white" id="heroPost">＋ Criar publicação</button><button class="btn btn-ghost" data-jump="profiles">Explorar perfis →</button></div>
+    </section>
+    <section class="feed-view" id="feedView">
+      <div class="section-head"><div><h2>Histórias de hoje 🐾</h2><p>As novidades dos teus amigos de quatro — e duas — patas.</p></div><span class="pill">Ao vivo no PetLoop</span></div>
+      <div class="stories" id="stories"></div>
+      <div class="composer card"><div class="composer-face">🐶</div><input id="composerInput" placeholder="O que anda o teu patudo a fazer?"><button id="composerBtn">Publicar</button></div>
+      <div class="section-head"><h2>O que se passa na comunidade</h2><select id="sortSelect" class="pill" aria-label="Ordenar publicações"><option value="recent">Mais recentes</option><option value="popular">Mais populares</option></select></div>
+      <div class="filter-row" id="feedFilters">
+        <button class="filter active" data-filter="Todos">🌈 Todos</button><button class="filter" data-filter="Cão">🐶 Cães</button><button class="filter" data-filter="Gato">🐱 Gatos</button><button class="filter" data-filter="Ave">🦜 Aves</button><button class="filter" data-filter="Peixe">🐠 Peixes</button><button class="filter" data-filter="Coelho">🐰 Coelhos</button><button class="filter" data-filter="Outro">🐾 Outros</button>
+      </div>
+      <div id="posts"></div>
+    </section>
+    <section class="directory" id="profilesView">
+      <div class="section-head"><div><h2>Explorar perfis 🐾</h2><p>Conhece novos amigos de todas as espécies.</p></div><span class="pill" id="profileCount"></span></div>
+      <div class="filter-row" id="profileFilters"><button class="filter active" data-species="Todos">Todos</button><button class="filter" data-species="Cão">🐶 Cães</button><button class="filter" data-species="Gato">🐱 Gatos</button><button class="filter" data-species="Ave">🦜 Aves</button><button class="filter" data-species="Peixe">🐠 Peixes</button><button class="filter" data-species="Coelho">🐰 Coelhos</button><button class="filter" data-species="Outro">🐾 Outros</button></div>
+      <div class="profile-grid" id="profileGrid"></div>
+    </section>
+    <section class="directory" id="pagesView">
+      <div class="section-head"><div><h2>Páginas sobre animais 📚</h2><p>Aprende, partilha e descobre conteúdos para cuidar melhor dos animais.</p></div><span class="pill" id="pageCount"></span></div>
+      <div class="filter-row" id="pageFilters"><button class="filter active" data-pagecat="Todas">Todas</button><button class="filter" data-pagecat="Cuidados">Cuidados</button><button class="filter" data-pagecat="Espécies">Espécies</button><button class="filter" data-pagecat="Aventura">Aventura</button><button class="filter" data-pagecat="Bem-estar">Bem-estar</button></div>
+      <div class="page-grid" id="pageGrid"></div>
+    </section>
+    <section class="directory" id="groupsView">
+      <div class="section-head"><div><h2>Comunidades 💬</h2><p>Conversas para quem partilha a mesma paixão.</p></div></div>
+      <div class="page-grid" id="groupGrid"></div>
+    </section>
+    <section class="directory" id="eventsView">
+      <div class="section-head"><div><h2>Eventos da comunidade 🎉</h2><p>Encontros e atividades para animais e tutores.</p></div></div>
+      <div class="page-grid" id="eventGrid"></div>
+    </section>
+    <section class="directory" id="savedView">
+      <div class="section-head"><div><h2>Publicações guardadas 🔖</h2><p>As histórias que queres rever mais tarde.</p></div></div>
+      <div id="savedPosts"></div>
+    </section>
+  </main>
+  <aside class="right-col">
+    <div class="panel right-card"><h3 class="right-title">Perfis que podes gostar <a data-jump="profiles">Ver todos</a></h3><div id="suggestions"></div></div>
+    <div class="panel right-card"><h3 class="right-title">Páginas em destaque <a data-jump="pages">Explorar</a></h3><div id="featuredPages"></div></div>
+    <div class="panel right-card"><h3 class="right-title">Próximos encontros</h3><div class="event"><div class="event-date">SÁB · 10:00</div><b>🐕 Passeio dos Patudos</b><p>Um passeio descontraído para cães e tutores.</p><button class="event-join">Tenho interesse</button></div><div class="event"><div class="event-date">DOM · 15:00</div><b>🐱 Tarde dos Gatos</b><p>Partilha de dicas e fotografias felinas.</p><button class="event-join">Tenho interesse</button></div></div>
+    <p style="font-size:11px;color:#9a96aa;line-height:1.5;padding:0 8px">PetLoop é uma demonstração. Conteúdos e perfis são ilustrativos. Em encontros reais, protege os teus dados e combina locais públicos.</p>
+  </aside>
+</div>
+<nav class="mobile-nav"><button class="active" data-view="feed"><span>🏠</span>Início</button><button data-view="profiles"><span>🐾</span>Perfis</button><button data-view="pages"><span>📚</span>Páginas</button><button data-view="groups"><span>💬</span>Grupos</button><button id="mobileCreate"><span>＋</span>Publicar</button></nav>
+<div class="modal-backdrop" id="modalBackdrop"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><h2 id="modalTitle">Criar publicação</h2><p>Partilha um momento especial do teu animal com a comunidade.</p><label class="form-field">Nome do animal<input id="petInput" placeholder="Ex.: Luna"></label><label class="form-field">Espécie<select id="speciesInput"><option>Cão</option><option>Gato</option><option>Ave</option><option>Peixe</option><option>Coelho</option><option>Outro</option></select></label><label class="form-field">A tua história<textarea id="textInput" placeholder="Conta-nos o que aconteceu..."></textarea></label><label class="form-field">Ambiente da publicação<select id="moodInput"><option value="art-sun">☀️ Dia feliz</option><option value="art-sea">🌊 Fresquinho</option><option value="art-green">🌿 Natureza</option><option value="art-night">💜 Momento especial</option><option value="art-sand">🏖️ Aventura</option></select></label><div class="modal-actions"><button class="btn btn-light" id="cancelModal">Cancelar</button><button class="btn btn-primary" id="submitPost">Publicar</button></div></div></div>
+<div class="toast" id="toast"></div>
+<script>
+const profiles = [
+ {name:"Luna",species:"Cão",emoji:"🐶",breed:"Golden Retriever",bio:"Apaixonada por praias, bolas e abraços.",city:"Setúbal"},
+ {name:"Mia",species:"Gato",emoji:"🐈",breed:"Gata europeia",bio:"Especialista em sestas e caixas de cartão.",city:"Lisboa"},
+ {name:"Pipoca",species:"Coelho",emoji:"🐰",breed:"Coelho anão",bio:"Pequena, curiosa e cheia de energia.",city:"Almada"},
+ {name:"Kiwi",species:"Ave",emoji:"🦜",breed:"Periquito",bio:"Assobio todas as manhãs. Música incluída!",city:"Seixal"},
+ {name:"Nemo",species:"Peixe",emoji:"🐠",breed:"Peixe-palhaço",bio:"Rei do meu pequeno mundo aquático.",city:"Cascais"},
+ {name:"Thor",species:"Cão",emoji:"🐕",breed:"Pastor alemão",bio:"Guarda oficial dos brinquedos cá de casa.",city:"Sintra"},
+ {name:"Simba",species:"Gato",emoji:"🦁",breed:"Gato laranja",bio:"A casa é minha. Os humanos também.",city:"Porto"},
+ {name:"Blue",species:"Ave",emoji:"🦜",breed:"Agapornis",bio:"Pequenino no tamanho, enorme na personalidade.",city:"Amadora"},
+ {name:"Bolota",species:"Outro",emoji:"🐹",breed:"Hamster sírio",bio:"Corredor profissional na roda.",city:"Évora"},
+ {name:"Dory",species:"Peixe",emoji:"🐟",breed:"Peixe-dourado",bio:"Nado em círculos e sorrio sempre.",city:"Faro"},
+ {name:"Kiko",species:"Cão",emoji:"🐕‍🦺",breed:"Cão rafeiro",bio:"Adotado e muito orgulhoso disso!",city:"Amora"},
+ {name:"Nala",species:"Gato",emoji:"🐈‍⬛",breed:"Gata preta",bio:"Mística, meiga e dona do sofá.",city:"Coimbra"},
+ {name:"Paco",species:"Ave",emoji:"🦉",breed:"Coruja-das-torres",bio:"Perfil educativo de um centro de recuperação.",city:"Leiria"},
+ {name:"Mochi",species:"Coelho",emoji:"🐇",breed:"Coelho mini lop",bio:"Orelhas caídas, coração gigante.",city:"Oeiras"},
+ {name:"Rex",species:"Cão",emoji:"🐶",breed:"Beagle",bio:"O meu nariz escolhe o caminho.",city:"Braga"},
+ {name:"Amora",species:"Gato",emoji:"🐱",breed:"Gata tricolor",bio:"Caçadora de raios de sol.",city:"Aveiro"},
+ {name:"Tico",species:"Outro",emoji:"🦎",breed:"Gecko-leopardo",bio:"Pequeno explorador do terrário.",city:"Lisboa"},
+ {name:"Pérola",species:"Ave",emoji:"🕊️",breed:"Pomba doméstica",bio:"Gosto de calma e de observar o mundo.",city:"Setúbal"},
+ {name:"Biscoito",species:"Cão",emoji:"🐩",breed:"Caniche",bio:"Truques, passeios e biscoitos — por esta ordem.",city:"Funchal"},
+ {name:"Yuki",species:"Gato",emoji:"🐈",breed:"Gato branco",bio:"Modelo fotográfico a tempo inteiro.",city:"Viseu"},
+ {name:"Lilo",species:"Outro",emoji:"🦔",breed:"Ouriço-pigmeu africano",bio:"Perfil de curiosidades e cuidados responsáveis.",city:"Lisboa"},
+ {name:"Ziggy",species:"Ave",emoji:"🐦",breed:"Canário",bio:"Acordo a casa com concertos.",city:"Portimão"},
+ {name:"Panda",species:"Cão",emoji:"🐼",breed:"Shih Tzu",bio:"Pequeno, fofo e com muita opinião.",city:"Almada"},
+ {name:"Estrela",species:"Outro",emoji:"🐢",breed:"Tartaruga",bio:"Lenta? Só escolho bem o meu ritmo.",city:"Évora"}
+];
+const pages = [
+ {title:"Cães & Companhia",cat:"Espécies",emoji:"🐕",desc:"Raças, educação positiva, passeios e histórias de cães.",members:"18,4 mil"},
+ {title:"Mundo dos Gatos",cat:"Espécies",emoji:"🐈",desc:"Comportamento felino, enriquecimento e momentos fofos.",members:"22,1 mil"},
+ {title:"Aves de Estimação",cat:"Espécies",emoji:"🦜",desc:"Bem-estar, enriquecimento e cuidados responsáveis com aves.",members:"6,8 mil"},
+ {title:"Aquários em Casa",cat:"Cuidados",emoji:"🐠",desc:"Aquariofilia, qualidade da água e habitats saudáveis.",members:"9,2 mil"},
+ {title:"Pequenos Patudos",cat:"Espécies",emoji:"🐰",desc:"Coelhos, porquinhos-da-índia e outros pequenos companheiros.",members:"7,5 mil"},
+ {title:"Adotar é Amar",cat:"Bem-estar",emoji:"💚",desc:"Histórias de adoção, associações e famílias felizes.",members:"15,7 mil"},
+ {title:"Veterinário Explica",cat:"Cuidados",emoji:"🩺",desc:"Informação geral de saúde animal para conversar com o veterinário.",members:"12,3 mil"},
+ {title:"Nutrição Animal",cat:"Cuidados",emoji:"🥣",desc:"Alimentação adequada a cada espécie e etapa de vida.",members:"5,4 mil"},
+ {title:"Patudos Aventureiros",cat:"Aventura",emoji:"🥾",desc:"Trilhos, praias pet-friendly e passeios com segurança.",members:"8,1 mil"},
+ {title:"Fotografia Animal",cat:"Aventura",emoji:"📸",desc:"Dicas para fotografar personalidades de quatro patas.",members:"4,9 mil"},
+ {title:"Animais Séniores",cat:"Bem-estar",emoji:"🧡",desc:"Apoio e ideias para melhorar o conforto dos animais idosos.",members:"3,7 mil"},
+ {title:"Réptil & Terrário",cat:"Espécies",emoji:"🦎",desc:"Habitats, temperatura e informação de cuidadores experientes.",members:"2,8 mil"},
+ {title:"Cavalos e Natureza",cat:"Aventura",emoji:"🐴",desc:"Equitação responsável, bem-estar e vida ao ar livre.",members:"6,1 mil"},
+ {title:"Primeiros Socorros Pet",cat:"Cuidados",emoji:"🚑",desc:"Preparação e sinais de alerta — sem substituir assistência veterinária.",members:"10,6 mil"},
+ {title:"Brincar e Aprender",cat:"Bem-estar",emoji:"🧩",desc:"Enriquecimento ambiental, jogos e treino baseado em recompensa.",members:"7,2 mil"}
+];
+const groups = [
+ {title:"Tutores de Cães em Portugal",emoji:"🐶",desc:"Dúvidas, passeios e treino com reforço positivo.",members:"4,2 mil"},
+ {title:"Apaixonados por Gatos",emoji:"🐱",desc:"Um espaço para partilhar ronrons e dicas felinas.",members:"5,8 mil"},
+ {title:"Adoção e Voluntariado",emoji:"💚",desc:"Apoia associações e ajuda animais a encontrar família.",members:"3,1 mil"},
+ {title:"Aquários e Aquascaping",emoji:"🐠",desc:"Montagem de aquários e troca de experiências.",members:"1,9 mil"},
+ {title:"Aves: cuidados responsáveis",emoji:"🦜",desc:"Enriquecimento e boas práticas para aves domésticas.",members:"1,4 mil"},
+ {title:"Pequenos Mamíferos",emoji:"🐹",desc:"Coelhos, hamsters e porquinhos-da-índia.",members:"1,2 mil"}
+];
+const events = [
+ {title:"Passeio dos Patudos",emoji:"🐕",date:"SÁBADO · 10:00",desc:"Passeio comunitário num parque público. Confirma sempre as regras locais."},
+ {title:"Tarde dos Gatos",emoji:"🐈",date:"DOMINGO · 15:00",desc:"Partilha de fotografias e conversa sobre enriquecimento felino."},
+ {title:"Encontro de Adoção",emoji:"💚",date:"PRÓXIMA SEMANA",desc:"Conhece o trabalho de associações locais e aprende sobre adoção responsável."},
+ {title:"Fotografia Pet",emoji:"📸",date:"EM BREVE",desc:"Dicas para tirar fotografias naturais e divertidas aos teus animais."},
+ {title:"Dia do Aquário",emoji:"🐠",date:"EM BREVE",desc:"Conversa sobre manutenção, água e habitats aquáticos."},
+ {title:"Quiz do Reino Animal",emoji:"🦁",date:"ONLINE · SEXTA",desc:"Testa os teus conhecimentos sobre espécies e curiosidades."}
+];
+let posts = [
+ {id:1,name:"Luna",species:"Cão",emoji:"🐶",time:"há 12 min",text:"Descobri um trilho novo com cheiros incríveis. A minha humana diz que andámos muito… eu digo que foi só um aquecimento! 🐾",art:"art-green",caption:"Aventura na natureza",likes:128,comments:14,saved:false,liked:false},
+ {id:2,name:"Mia",species:"Gato",emoji:"🐈",time:"há 28 min",text:"Comunicado oficial: a caixa que chegou hoje é minha. O conteúdo pode ficar com os humanos. 😼",art:"art-sun",caption:"A caixa perfeita",likes:94,comments:21,saved:false,liked:false},
+ {id:3,name:"Kiwi",species:"Ave",emoji:"🦜",time:"há 45 min",text:"Hoje aprendi um assobio novo! A casa inteira entrou no meu concerto matinal. 🎶",art:"art-night",caption:"Pequeno músico",likes:72,comments:8,saved:false,liked:false},
+ {id:4,name:"Nemo",species:"Peixe",emoji:"🐠",time:"há 1 h",text:"O meu cuidador reorganizou algumas plantas do aquário. Mais esconderijos, mais sítios para explorar! 💙",art:"art-sea",caption:"O meu mundo azul",likes:63,comments:11,saved:false,liked:false},
+ {id:5,name:"Pipoca",species:"Coelho",emoji:"🐰",time:"há 2 h",text:"Hora do feno, uma corrida pela sala e depois uma sesta merecida. A rotina perfeita! 🌿",art:"art-sand",caption:"Vida de coelhinha",likes:51,comments:6,saved:false,liked:false},
+ {id:6,name:"Kiko",species:"Cão",emoji:"🐕‍🦺",time:"há 3 h",text:"Fui adotado há um ano. Hoje celebro mais um capítulo cheio de segurança, paciência e amor. 💚",art:"art-green",caption:"Adoção muda vidas",likes:245,comments:37,saved:false,liked:false},
+ {id:7,name:"Simba",species:"Gato",emoji:"🦁",time:"há 4 h",text:"A luz do sol estava exatamente no sítio certo. Interromper esta sesta devia ser ilegal.",art:"art-sun",caption:"Especialista em sestas",likes:83,comments:10,saved:false,liked:false},
+ {id:8,name:"Bolota",species:"Outro",emoji:"🐹",time:"há 5 h",text:"Fiz exercício na roda e agora preciso de um lanche. O equilíbrio é tudo.",art:"art-night",caption:"Energia sem fim",likes:46,comments:4,saved:false,liked:false}
+];
+let currentFeedFilter="Todos", currentSpecies="Todos", currentPageCat="Todas", searchTerm="", activeView="feed";
+const $=id=>document.getElementById(id);
+const speciesEmoji={"Cão":"🐶","Gato":"🐱","Ave":"🦜","Peixe":"🐠","Coelho":"🐰","Outro":"🐾"};
+function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");clearTimeout(window._toastTimer);window._toastTimer=setTimeout(()=>t.classList.remove("show"),2300)}
+function safe(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function loadSaved(){try{const d=JSON.parse(localStorage.getItem("petloopPlus")||"{}");if(d.posts)posts=d.posts;if(d.follows)window.followed=new Set(d.follows);else window.followed=new Set();}catch(e){window.followed=new Set()}}
+function persist(){try{localStorage.setItem("petloopPlus",JSON.stringify({posts,follows:[...window.followed]}))}catch(e){}}
+function renderStories(){const arr=profiles.slice(0,12);$("stories").innerHTML=arr.map(p=>`<div class="story" data-story="${safe(p.name)}"><div class="story-ring"><div class="story-face">${p.emoji}</div></div><div class="story-name">${safe(p.name)}</div></div>`).join("")}
+function postHTML(p){return `<article class="card post" data-postid="${p.id}"><div class="post-head"><div class="pet-avatar">${p.emoji}</div><div><div class="pet-name">${safe(p.name)} <span style="font-size:11px;color:#a29db4;font-weight:600">· ${safe(p.species)}</span></div><div class="pet-meta">${safe(p.time)} · Perfil de animal</div></div><button class="more" title="Mais opções" data-more="${p.id}">···</button></div><div class="post-text">${safe(p.text)}</div><div class="post-art ${p.art}" data-caption="${safe(p.caption)}">${p.emoji}</div><div class="post-stats"><span>💜 ${p.likes} gostos</span><span>${p.comments} comentários</span></div><div class="post-actions"><button class="post-action ${p.liked?'liked':''}" data-like="${p.id}">${p.liked?'💜 Gostaste':'♡ Gostar'}</button><button class="post-action" data-comment="${p.id}">💬 Comentar</button><button class="post-action ${p.saved?'liked':''}" data-save="${p.id}">${p.saved?'🔖 Guardado':'🔖 Guardar'}</button><button class="post-action" data-share="${p.id}">↗ Partilhar</button></div><div class="comment-box" id="comment-${p.id}"><input placeholder="Escreve um comentário..." aria-label="Comentário"><button data-sendcomment="${p.id}">Enviar</button></div></article>`}
+function matchesSearch(s){return !searchTerm||s.toLowerCase().includes(searchTerm)}
+function renderPosts(target="posts",list=null){let arr=(list||posts).filter(p=>(currentFeedFilter==="Todos"||p.species===currentFeedFilter)&&matchesSearch([p.name,p.species,p.text].join(" ").toLowerCase()));if($("sortSelect")?.value==="popular"&&target==="posts")arr.sort((a,b)=>b.likes-a.likes);else if(target==="posts")arr.sort((a,b)=>b.id-a.id);$(target).innerHTML=arr.length?arr.map(postHTML).join(""):`<div class="card empty">Ainda não há publicações nesta seleção. Experimenta outro filtro ou cria uma publicação! 🐾</div>`}
+function renderProfiles(){let arr=profiles.filter(p=>(currentSpecies==="Todos"||p.species===currentSpecies)&&matchesSearch([p.name,p.species,p.breed,p.bio,p.city].join(" ").toLowerCase()));$("profileCount").textContent=`${arr.length} perfis`;$("profileGrid").innerHTML=arr.map(p=>`<article class="card profile-card"><div class="big-emoji">${p.emoji}</div><h3>${safe(p.name)}</h3><div style="font-size:11px;color:#8c86a4;font-weight:750">${safe(p.breed)}</div><p>${safe(p.bio)}</p><div style="font-size:10px;color:#a19bb2;margin-bottom:8px">📍 ${safe(p.city)} · ${safe(p.species)}</div><button class="follow ${window.followed.has(p.name)?'following':''}" data-follow="${safe(p.name)}">${window.followed.has(p.name)?'✓ A seguir':'＋ Seguir'}</button></article>`).join("")||`<div class="empty">Não encontrámos perfis com essa pesquisa.</div>`}
+function pageHTML(p){return `<article class="card page-card"><div class="community-icon">${p.emoji}</div><h3>${safe(p.title)}</h3><div style="font-size:10px;color:#8b85a3;font-weight:800;text-transform:uppercase;letter-spacing:.8px">${safe(p.cat)}</div><p>${safe(p.desc)}</p><div style="font-size:11px;color:#9993ad;margin:8px 0">${p.members} membros</div><button class="btn" data-joinpage="${safe(p.title)}">＋ Seguir página</button></article>`}
+function renderPages(){let arr=pages.filter(p=>(currentPageCat==="Todas"||p.cat===currentPageCat)&&matchesSearch([p.title,p.cat,p.desc].join(" ").toLowerCase()));$("pageCount").textContent=`${arr.length} páginas`;$("pageGrid").innerHTML=arr.map(pageHTML).join("")||`<div class="empty">Não encontrámos páginas.</div>`}
+function renderCards(data,target){const arr=data.filter(x=>matchesSearch([x.title,x.desc].join(" ").toLowerCase()));$(target).innerHTML=arr.map(x=>`<article class="card page-card"><div class="community-icon">${x.emoji}</div><h3>${safe(x.title)}</h3><p>${safe(x.desc)}</p><div style="font-size:11px;color:#9993ad;margin:8px 0">${x.members||"Comunidade PetLoop"} membros</div><button class="btn" data-joinpage="${safe(x.title)}">＋ Participar</button></article>`).join("")||`<div class="empty">Sem resultados para esta pesquisa.</div>`}
+function renderSuggestions(){const picks=profiles.filter(p=>!window.followed.has(p.name)).slice(0,4);$("suggestions").innerHTML=picks.map(p=>`<div class="profile-row"><div class="profile-emoji">${p.emoji}</div><div class="profile-info"><b>${safe(p.name)}</b><small>${safe(p.breed)}</small></div><button class="follow" data-follow="${safe(p.name)}">Seguir</button></div>`).join("")}
+function renderFeatured(){ $("featuredPages").innerHTML=pages.slice(0,4).map(p=>`<div class="community"><div class="community-icon">${p.emoji}</div><div><b>${safe(p.title)}</b><small>${p.members} membros</small></div></div>`).join("")}
+function renderSaved(){const arr=posts.filter(p=>p.saved);$("savedPosts").innerHTML=arr.length?arr.map(postHTML).join(""):`<div class="card empty">Ainda não guardaste publicações. Usa o botão 🔖 no feed para as encontrares aqui.</div>`}
+function switchView(v){activeView=v;document.querySelectorAll(".feed-view,.directory").forEach(e=>e.classList.add("hidden"));$("feedView").classList.toggle("hidden",v!=="feed");["profiles","pages","groups","events","saved"].forEach(n=>$(n+"View").classList.toggle("active",v===n));document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v==="profiles")renderProfiles();if(v==="pages")renderPages();if(v==="groups")renderCards(groups,"groupGrid");if(v==="events")renderCards(events.map(e=>({...e,title:e.title,cat:e.date,members:"Evento"})),"eventGrid");if(v==="saved")renderSaved();window.scrollTo({top:0,behavior:"smooth"})}
+function openModal(prefill=""){ $("textInput").value=prefill;$("modalBackdrop").classList.add("open");setTimeout(()=>$("petInput").focus(),80)}
+function createPost(){const name=$("petInput").value.trim()||"O meu patudo",species=$("speciesInput").value,text=$("textInput").value.trim(),art=$("moodInput").value;if(!text){toast("Escreve uma pequena história antes de publicar.");$("textInput").focus();return}posts.unshift({id:Date.now(),name,species,emoji:speciesEmoji[species]||"🐾",time:"agora",text,art,caption:"Novo momento partilhado",likes:0,comments:0,saved:false,liked:false});persist();$("modalBackdrop").classList.remove("open");$("petInput").value="";$("textInput").value="";currentFeedFilter="Todos";document.querySelectorAll("#feedFilters .filter").forEach(b=>b.classList.toggle("active",b.dataset.filter==="Todos"));renderPosts();switchView("feed");toast("Publicação criada! 🐾")}
+document.addEventListener("click",e=>{
+ const view=e.target.closest("[data-view]");if(view){switchView(view.dataset.view);return}
+ const jump=e.target.closest("[data-jump]");if(jump){switchView(jump.dataset.jump);return}
+ const like=e.target.closest("[data-like]");if(like){const p=posts.find(x=>x.id==like.dataset.like);if(p){p.liked=!p.liked;p.likes+=p.liked?1:-1;persist();renderPosts(activeView==="saved"?"savedPosts":"posts",activeView==="saved"?posts.filter(x=>x.saved):null)}return}
+ const save=e.target.closest("[data-save]");if(save){const p=posts.find(x=>x.id==save.dataset.save);if(p){p.saved=!p.saved;persist();renderPosts(activeView==="saved"?"savedPosts":"posts",activeView==="saved"?posts.filter(x=>x.saved):null);toast(p.saved?"Guardado para mais tarde":"Removido dos guardados")}return}
+ const comment=e.target.closest("[data-comment]");if(comment){const box=$("comment-"+comment.dataset.comment);if(box)box.classList.toggle("open");return}
+ const send=e.target.closest("[data-sendcomment]");if(send){const box=$("comment-"+send.dataset.sendcomment),input=box.querySelector("input");if(input.value.trim()){const p=posts.find(x=>x.id==send.dataset.sendcomment);p.comments++;persist();toast("Comentário adicionado (demonstração).");renderPosts(activeView==="saved"?"savedPosts":"posts",activeView==="saved"?posts.filter(x=>x.saved):null)}return}
+ const follow=e.target.closest("[data-follow]");if(follow){const name=follow.dataset.follow;if(window.followed.has(name))window.followed.delete(name);else window.followed.add(name);persist();renderProfiles();renderSuggestions();toast(window.followed.has(name)?`Agora segues ${name}!`:`Deixaste de seguir ${name}.`);return}
+ const join=e.target.closest("[data-joinpage]");if(join){toast(`Adicionaste "${join.dataset.joinpage}" à tua lista (demonstração).`);join.textContent="✓ Adicionado";return}
+ const share=e.target.closest("[data-share]");if(share){const p=posts.find(x=>x.id==share.dataset.share);if(navigator.share){navigator.share({title:"PetLoop",text:p.text}).catch(()=>{})}else{try{navigator.clipboard.writeText(p.text);toast("Texto copiado para partilhar!")}catch(err){toast("Partilha de demonstração.")}}return}
+ const story=e.target.closest("[data-story]");if(story){const p=profiles.find(x=>x.name===story.dataset.story);toast(`${p.name} · ${p.bio}`);return}
+ const more=e.target.closest("[data-more]");if(more){toast("Opções adicionais estarão disponíveis na versão completa.");return}
+ const event=e.target.closest(".event-join");if(event){event.textContent="✓ Interesse registado";toast("Interesse registado (demonstração).");return}
+});
+document.querySelectorAll("#feedFilters .filter").forEach(b=>b.addEventListener("click",()=>{currentFeedFilter=b.dataset.filter;document.querySelectorAll("#feedFilters .filter").forEach(x=>x.classList.toggle("active",x===b));renderPosts()}));
+document.querySelectorAll("#profileFilters .filter").forEach(b=>b.addEventListener("click",()=>{currentSpecies=b.dataset.species;document.querySelectorAll("#profileFilters .filter").forEach(x=>x.classList.toggle("active",x===b));renderProfiles()}));
+document.querySelectorAll("#pageFilters .filter").forEach(b=>b.addEventListener("click",()=>{currentPageCat=b.dataset.pagecat;document.querySelectorAll("#pageFilters .filter").forEach(x=>x.classList.toggle("active",x===b));renderPages()}));
+$("searchInput").addEventListener("input",e=>{searchTerm=e.target.value.trim().toLowerCase();renderPosts();renderProfiles();renderPages();renderCards(groups,"groupGrid");renderCards(events.map(x=>({...x,title:x.title,cat:x.date,members:"Evento"})),"eventGrid")});
+$("sortSelect").addEventListener("change",()=>renderPosts());
+$("composerBtn").addEventListener("click",()=>openModal($("composerInput").value));$("heroPost").addEventListener("click",()=>openModal());$("mobileCreate").addEventListener("click",()=>openModal());$("composerInput").addEventListener("keydown",e=>{if(e.key==="Enter")openModal($("composerInput").value)});
+$("cancelModal").addEventListener("click",()=>$("modalBackdrop").classList.remove("open"));$("submitPost").addEventListener("click",createPost);$("modalBackdrop").addEventListener("click",e=>{if(e.target===$("modalBackdrop"))$("modalBackdrop").classList.remove("open")});$("notifyBtn").addEventListener("click",()=>toast("Estás em dia com as novidades! 💜"));
+loadSaved();renderStories();renderPosts();renderProfiles();renderPages();renderSuggestions();renderFeatured();renderCards(groups,"groupGrid");renderCards(events.map(x=>({...x,title:x.title,cat:x.date,members:"Evento"})),"eventGrid");
+</script>
+</body>
+</html>
